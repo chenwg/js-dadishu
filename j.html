@@ -2,22 +2,60 @@
   <head>
   </head>
   <style>
-  	div{width:610px;height:610px;border:1px solid #FFFFCC;margin: 0 auto;margin-top: 40px;}
-  	span{width:194px;height:194px;border:1px solid #C9AD20;float:left;margin:2px}
+  	div{width:700px;height:7000px;border:1px solid #FFFFCC;margin: 0 auto;margin-top: 40px;}
+  	span{width:100px;height:100px;border:1px solid #C9AD20;float:left;margin:2px}
   	span:hover{cursor:pointer}
   	i{color:red}
   	.bg{background-color:#C9AD20}
   </style>
   <body>
-  	<p>游戏总时间:<input type="number" id="at" value="1">分钟<input type="button" onclick="start(1)" value="开始">游戏剩余时间<i id="ht"></i>秒</p>
+  	<p>难度选择：
+  		<select id="level" style="display: none;">
+  			<option value="1">1级</option>
+  			<option value="2">2级</option>
+  			<option value="3">3级</option>
+  			<option value="4">4级</option>
+  			<option value="5">5级</option>
+  			<option value="6">6级</option>
+  			<option value="7">7级</option>
+  		</select>
+  		&nbsp;&nbsp;&nbsp;
+  		游戏总时间:<input type="number" id="at" value="1">分钟<input type="button" onclick="start(1)" value="开始">&nbsp;游戏剩余时间<i id="ht"></i>秒
+  		&nbsp;&nbsp;&nbsp;
   	
-  	<p>游戏总步数<input type="number" id="step" value="11">步
-  	<input type="button" onclick="start(2)" value="开始">剩余步数<i id="hs"></i>
-  	</p>
-  	<p><input type="button" onclick="end()" value="停止游戏"></p>
-  	<p><input type="button" onclick="window.location.reload();" value="从新开始"></p>
-  	<p>点对:<i id="r">0</i>,点错:<i id="w">0</i>,漏选:<i id="l">0</i></p>
- 		<div>
+  	游戏总步数<input type="number" id="step" value="11">步
+  	<input type="button" onclick="start(2)" value="开始">&nbsp;剩余步数<i id="hs"></i>
+  &nbsp;&nbsp;&nbsp;
+  	<input type="button" onclick="window.location.reload();" value="从新开始">
+  	<p>点对:<i id="r">0</i>，点错:<i id="w">0</i>，漏选:<i id="l">0</i></p>
+ 		<div id="contaion">
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
+ 			<span></span>
  			<span></span>
  			<span></span>
  			<span></span>

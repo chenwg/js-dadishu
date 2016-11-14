@@ -5,17 +5,22 @@
 		st=document.getElementById('st'),
 		r = document.getElementById('r'),
 		w = document.getElementById('w'),
-		l = document.getElementById('l');
-	var pl;
-	var alltime = 0;
-	var steps = 0;
-	var spList = document.getElementsByTagName('span');
-	var spLen = spList.length;
-	var bef=0;
-	var clickOne = false;
-	var rnum = 0;
-	var wnum = 0;
-	var lnum = 0;
+		l = document.getElementById('l'),
+		pl,
+		alltime = 0,
+		steps = 0,
+		spList = document.getElementsByTagName('span'),
+		spLen = spList.length,
+		bef=0,
+		clickOne = false,
+		clickWrong = true,
+		clickRight = true,
+		clickHas = true,
+		startClick = false,
+		rnum = 0,
+		wnum = 0,
+		lnum = 0;
+
 	function start(type){
 		window.clearInterval(pl);
 		switch (type)
@@ -30,49 +35,54 @@
 				break;
 		}
 		for(var i=0;i<spLen;i++){
+			var pics = Math.round(Math.random()*10);
+			spList[i].style.background = 'url(images/a'+String(pics)+'.jpg)';
 			spList[i].addEventListener('click',function(e){
-				for(var j=0;j<spLen;j++){
-					if(spList[j] == this){
-						if(clickOne){
-							if(j == bef){
+				if(startClick){
+					for(var j=0;j<spLen;j++){
+						if(spList[j] == this){
+							if(j == bef && clickRight){
+								spList[j].getElementsByTagName('img')[0].setAttribute('src','images/dadao.jpg');
 								r.innerText = ++rnum;
-							}else{
-								w.innerText = ++wnum;
+								clickRight = false;//判断点对
 							}
-							clickOne = false;
-						}
-					}
-							
-				}
+							clickOne = false;//判断漏点
+						}			
+					}	
+				}	
 			})
 		}
-		pl = window.setInterval('showColor('+type+')',1000)
+		pl = window.setInterval('showDishu('+type+')',2000)
 	}
 
-	var showColor = function(type){
+	var showDishu = function(type){
+		console.log(steps)
 		if(alltime < 0 || steps < 0){
 			window.clearInterval(pl);
 			return false;
 		}
 		if(alltime > 0 || steps >0){
-			spList[bef].style.backgroundColor = '#FFF';
+			spList[bef].innerHTML = '';
 			var mt = Math.round(Math.random()*8);
 			if(mt == 0 && mt == bef){
 				mt = 1; 
 			}else if(mt == bef){
 				mt = spLen-1;
 			}
-			spList[mt].style.backgroundColor = '#C9AD20';
+			spList[mt].innerHTML = '<img src="images/dishu1.jpg" style="width:94px;height:94px;border:3px solid #c40000">';
 		}
 		if(clickOne)l.innerText = ++lnum;
+		if(!clickOne && clickRight)w.innerText = ++wnum;
 		if(alltime > 0 || steps > 0){
-			clickOne = true;
+			startClick = clickRight = clickOne = true;
 			bef = mt;
+		}else{
+			clickOne = false;
 		}
 		switch (type)
 		{
 			case 1:
-				alltime -= 1;
+				alltime -= 2;
 				if(alltime > -1)ht.innerText = alltime;
 				break;
 			case 2:
@@ -82,4 +92,6 @@
 			default:
 				break;
 		}
+		console.log(startClick)
 	}
+	
