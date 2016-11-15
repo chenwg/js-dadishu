@@ -46,38 +46,38 @@
 								r.innerText = ++rnum;
 								clickRight = false;//判断点对
 							}
-							clickOne = false;//判断漏点
 						}			
-					}	
-				}	
+					}
+					clickOne = false;//判断点漏
+				}
 			})
 		}
 		pl = window.setInterval('showDishu('+type+')',2000)
 	}
 
 	var showDishu = function(type){
-		console.log(steps)
 		if(alltime < 0 || steps < 0){
 			window.clearInterval(pl);
 			return false;
 		}
 		if(alltime > 0 || steps >0){
 			spList[bef].innerHTML = '';
-			var mt = Math.round(Math.random()*8);
+			var mt = Math.round(Math.random()*35);
 			if(mt == 0 && mt == bef){
 				mt = 1; 
 			}else if(mt == bef){
 				mt = spLen-1;
 			}
+			console.log(mt)
 			spList[mt].innerHTML = '<img src="images/dishu1.jpg" style="width:94px;height:94px;border:3px solid #c40000">';
 		}
-		if(clickOne)l.innerText = ++lnum;
-		if(!clickOne && clickRight)w.innerText = ++wnum;
+		if(clickOne && startClick)l.innerText = ++lnum;
+		if(startClick && !clickOne && clickRight)w.innerText = ++wnum;
 		if(alltime > 0 || steps > 0){
 			startClick = clickRight = clickOne = true;
 			bef = mt;
 		}else{
-			clickOne = false;
+			startClick = clickOne = false;
 		}
 		switch (type)
 		{
@@ -92,6 +92,5 @@
 			default:
 				break;
 		}
-		console.log(startClick)
 	}
 	
