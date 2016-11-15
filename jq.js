@@ -1,11 +1,12 @@
-	var at = document.getElementById('at'),
-		ht = document.getElementById('ht'),
-		step = document.getElementById('step'),
-		hs = document.getElementById('hs'),
-		st = document.getElementById('st'),
-		r = document.getElementById('r'),
-		w = document.getElementById('w'),
-		l = document.getElementById('l'),
+	
+	var at = od.gd('at'),
+		ht = od.gd('ht'),
+		step = od.gd('step'),
+		hs = od.gd('hs'),
+		st = od.gd('st'),
+		r = od.gd('r'),
+		w = od.gd('w'),
+		l = od.gd('l'),
 		pl,
 		alltime = 0,
 		steps = 0,
@@ -20,7 +21,6 @@
 		rnum = 0,
 		wnum = 0,
 		lnum = 0;
-
 	function start(type) {
 		window.clearInterval(pl);
 		switch(type) {
@@ -67,7 +67,6 @@
 			} else if(mt == bef) {
 				mt = spLen - 1;
 			}
-			console.log(mt)
 			spList[mt].innerHTML = '<img src="images/dishu1.jpg" style="width:94px;height:94px;border:3px solid #c40000">';
 		}
 		if(clickOne && startClick) l.innerText = ++lnum;
